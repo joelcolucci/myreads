@@ -22,7 +22,7 @@ function Book(props) {
         </div>
       </div>
       <div className="book-title">{props.title}</div>
-      <div className="book-authors">{props.author}</div>
+      <div className="book-authors">{props.authors.map((author) => `${author} `)}</div>
     </div>
   );
 }
@@ -30,7 +30,7 @@ function Book(props) {
 
 Book.propTypes = {
   title: PropTypes.string,
-  author: PropTypes.string,
+  authors: PropTypes.string,
   coverUrl: PropTypes.string
 };
 

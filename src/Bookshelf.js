@@ -15,7 +15,7 @@ function Bookshelf(props) {
               <li key={book.id}>
                 <Book
                   title={book.title}
-                  author={book.author}
+                  authors={book.authors}
                   coverUrl={book.imageLinks.thumbnail} />
               </li>
             );
