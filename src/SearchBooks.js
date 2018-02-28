@@ -14,6 +14,7 @@ class SearchBooks extends React.Component {
     };
 
     this.handleQueryChange = this.handleQueryChange.bind(this);
+    this.handleBookshelfUpdate = this.handleBookshelfUpdate.bind(this);
   }
 
   handleQueryChange(query) {
@@ -29,11 +30,18 @@ class SearchBooks extends React.Component {
       });
   }
 
+  handleBookshelfUpdate(book, shelf) {
+    BooksAPI
+      .update(book, shelf);
+  }
+
   render() {
     return (
       <div className="search-books">
         <SearchBooksBar onQueryChange={this.handleQueryChange} />
-        <SearchBooksResults results={this.state.results} />
+        <SearchBooksResults
+          results={this.state.results}
+          onBookshelfUpdate={this.handleBookshelfUpdate} />
       </div>
     );
   }

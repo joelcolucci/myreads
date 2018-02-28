@@ -12,7 +12,8 @@ function SearchBooksResults(props) {
           return (
             <li key={book.id}>
               <Book
-                book={book} />
+                book={book}
+                onShelfUpdate={props.onBookshelfUpdate} />
             </li>
           );
         })}
@@ -23,7 +24,8 @@ function SearchBooksResults(props) {
 
 
 SearchBooksResults.propTypes = {
-  results: PropTypes.array
+  results: PropTypes.array,
+  onBookshelfUpdate: PropTypes.func
 };
 
 
