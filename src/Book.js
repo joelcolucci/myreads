@@ -7,7 +7,7 @@ class Book extends React.Component {
     super(props);
 
     this.state = {
-      shelf: props.book.shelf
+      shelf: props.book.shelf || 'none'
     };
 
     this.handleChange = this.handleChange.bind(this);
