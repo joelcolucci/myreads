@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
 class SearchBooksBar extends React.Component {
@@ -14,8 +15,11 @@ class SearchBooksBar extends React.Component {
   }
 
   handleQueryChange(event) {
-    let query = event.target.value;
-    this.setState({ query: query.trim() });
+    let query = event.target.value.trim();
+
+    this.setState({ query: query });
+
+    this.props.onQueryChange(query);
   }
 
   render() {
@@ -43,6 +47,11 @@ class SearchBooksBar extends React.Component {
     );
   }
 }
+
+
+SearchBooksBar.propTypes = {
+  onQueryChange: PropTypes.func
+};
 
 
 export default SearchBooksBar;
