@@ -7,7 +7,7 @@ class Book extends React.Component {
     super(props);
 
     this.state = {
-      shelf: 'none'
+      shelf: props.book.shelf
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,18 +17,20 @@ class Book extends React.Component {
     let updatedShelf = event.target.value;
     this.setState({shelf: updatedShelf});
 
-    // TODO: Invoke passed down ListBooks state handler
+    // Invoke passed down ListBooks state handler
+    this.props.onShelfUpdate(this.props.book, updatedShelf);
   }
 
   render() {
-    let { title, authors, coverUrl } = this.props;
+    let { title, authors, imageLinks } = this.props.book;
+
     return (
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${coverUrl})`
+            backgroundImage: `url(${imageLinks.thumbnail})`
             }}></div>
           <div className="book-shelf-changer">
             <select value={this.state.shelf} onChange={this.handleChange}>
@@ -49,9 +51,8 @@ class Book extends React.Component {
 
 
 Book.propTypes = {
-  title: PropTypes.string,
-  authors: PropTypes.array,
-  coverUrl: PropTypes.string
+  book: PropTypes.object.isRequired,
+  onShelfUpdate: PropTypes.func
 };
 
 

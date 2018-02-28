@@ -14,9 +14,8 @@ function Bookshelf(props) {
             return (
               <li key={book.id}>
                 <Book
-                  title={book.title}
-                  authors={book.authors}
-                  coverUrl={book.imageLinks.thumbnail} />
+                  book={book}
+                  onShelfUpdate={props.onBookshelfUpdate} />
               </li>
             );
           })}
@@ -29,7 +28,8 @@ function Bookshelf(props) {
 
 Bookshelf.propTypes = {
   title: PropTypes.string,
-  books: PropTypes.array
+  books: PropTypes.array,
+  onBookshelfUpdate: PropTypes.func
 };
 
 

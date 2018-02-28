@@ -14,6 +14,8 @@ class ListBooks extends React.Component {
     this.state = {
       books: []
     };
+
+    this.handleBookshelfUpdate = this.handleBookshelfUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +24,25 @@ class ListBooks extends React.Component {
       .then((books) => {
         this.setState({
           books: books
+        });
+      });
+  }
+
+  handleBookshelfUpdate(book, shelf) {
+    let updatedBooks = this.state.books.map((item) => {
+      // Use spread syntax to ensure immutability
+      if (item.id === book.id) {
+        return {...item, shelf: shelf};
+      } else {
+        return {...item};
+      }
+    });
+
+    BooksAPI
+      .update(book, shelf)
+      .then((_) => {
+        this.setState({
+          books: updatedBooks
         });
       });
   }
@@ -47,13 +68,16 @@ class ListBooks extends React.Component {
         <ListBooksContent>
           <Bookshelf
             title="Currently Reading"
-            books={currentlyReadingBooks} />
+            books={currentlyReadingBooks}
+            onBookshelfUpdate={this.handleBookshelfUpdate} />
           <Bookshelf
             title="Want to Read"
-            books={wantToReadBooks} />
+            books={wantToReadBooks}
+            onBookshelfUpdate={this.handleBookshelfUpdate} />
           <Bookshelf
             title="Read"
-            books={readBooks} />
+            books={readBooks}
+            onBookshelfUpdate={this.handleBookshelfUpdate} />
         </ListBooksContent>
         <div className="open-search">
           <Link
