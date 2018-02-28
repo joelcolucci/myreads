@@ -19,9 +19,11 @@ class ListBooks extends React.Component {
   componentDidMount() {
     BooksAPI
       .getAll()
-      .then((books) => this.setState({
-        books: books
-      }));
+      .then((books) => {
+        this.setState({
+          books: books
+        });
+      });
   }
 
   render() {
