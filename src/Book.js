@@ -27,7 +27,7 @@ class Book extends React.Component {
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{
+          <div className="book-cover" style={imageLinks && {
             width: 128,
             height: 193,
             backgroundImage: `url(${imageLinks.thumbnail})`
