@@ -21,7 +21,7 @@ class SearchBooks extends React.Component {
     BooksAPI
       .search(query)
       .then((results) => {
-        if (results.error) {
+        if (!results || results.error) {
           results = [];
         }
         this.setState({
