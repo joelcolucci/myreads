@@ -7,10 +7,6 @@ import SearchBooks from './SearchBooks';
 
 
 class BooksApp extends React.Component {
-  state = {
-
-  }
-
   render() {
     return (
       <div className="app">
@@ -22,7 +18,7 @@ class BooksApp extends React.Component {
           <ListBooks />
         )} />
       </div>
-    )
+    );
   }
 }
 
