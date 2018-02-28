@@ -17,7 +17,6 @@ class Book extends React.Component {
     let updatedShelf = event.target.value;
     this.setState({shelf: updatedShelf});
 
-    // Invoke passed down ListBooks state handler
     this.props.onShelfUpdate(this.props.book, updatedShelf);
   }
 
