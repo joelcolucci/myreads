@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import * as BooksAPI from './BooksAPI';
+import * as BooksAPI from '../utilities/BooksAPI';
 import Bookshelf from './Bookshelf';
 import ListBooksTitle from './ListBooksTitle';
 import ListBooksContent from './ListBooksContent';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as BooksAPI from './BooksAPI';
+import * as BooksAPI from '../utilities/BooksAPI';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
 
