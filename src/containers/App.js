@@ -12,7 +12,6 @@ class App extends React.Component {
 
     this.state = {
       booksById: {},
-      bookIdsByShelf: {},
       searchResults: []
     };
 
@@ -29,44 +28,27 @@ class App extends React.Component {
           return accumulator;
         }, {});
 
-        let bookIdsByShelf = books.reduce((accumulator, elem) => {
-          if (accumulator[elem.shelf]) {
-            accumulator[elem.shelf].push(elem.id);
-          } else {
-            accumulator[elem.shelf] = [elem.id];
-          }
-          return accumulator;
-        }, {});
-
         this.setState({
-          ...this.state,
           booksById: {
             ...this.state.booksById,
             ...booksById
-          },
-          bookIdsByShelf: {
-            ...this.state.bookIdsByShelf,
-            ...bookIdsByShelf
           }
         });
       });
   }
 
   handleBookshelfUpdate(book, shelf) {
-    let updatedBooks = this.state.books.map((item) => {
-      // Use spread syntax to ensure immutability
-      if (item.id === book.id) {
-        return {...item, shelf: shelf};
-      } else {
-        return {...item};
-      }
-    });
-
     BooksAPI
       .update(book, shelf)
-      .then((_) => {
+      .then(() => {
         this.setState({
-          books: updatedBooks
+          booksById: {
+            ...this.state.booksById,
+            [book.id]: {
+              ...book,
+              shelf: shelf
+            }
+          }
         });
       });
   }
