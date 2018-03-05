@@ -6,7 +6,7 @@ import ListBooks from '../components/ListBooks';
 import SearchBooks from '../components/SearchBooks';
 
 
-class BooksApp extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -66,4 +66,4 @@ class BooksApp extends React.Component {
 }
 
 
-export default BooksApp;
+export default App;
