@@ -98,9 +98,9 @@ class App extends React.Component {
         <Route path="/search" render={() => (
           <BookSearchPage
             searchResults={this.state.searchResults}
-            onResetSearchResults={this.handleResetSearchResults}
-            handleQueryChange={this.handleQueryChange}
-            onBookShelfUpdate={this.handleBookshelfUpdate} />
+            onBookShelfUpdate={this.handleBookshelfUpdate}
+            onQueryChange={this.handleQueryChange}
+            onResetSearchResults={this.handleResetSearchResults} />
         )} />
       </div>
     );

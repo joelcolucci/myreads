@@ -14,13 +14,13 @@ class BookSearchPage extends React.Component {
 
   render() {
     let {
-      handleQueryChange,
+      onQueryChange,
       searchResults,
       onBookShelfUpdate } = this.props;
 
     return (
       <div className="search-books">
-        <SearchBooksBar onQueryChange={handleQueryChange} />
+        <SearchBooksBar onQueryChange={onQueryChange} />
         <SearchBooksResults
           books={searchResults}
           onBookshelfUpdate={onBookShelfUpdate} />
