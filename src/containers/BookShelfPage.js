@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Bookshelf from './Bookshelf';
-import ListBooksTitle from './ListBooksTitle';
-import ListBooksContent from './ListBooksContent';
+import Bookshelf from '../components/Bookshelf';
+import ListBooksTitle from '../components/ListBooksTitle';
+import ListBooksContent from '../components/ListBooksContent';
 
 
-function ListBooks(props) {
+function BookShelfPage(props) {
   let { books, onBookshelfUpdate } = props;
 
   let currentlyReadingBooks = books.filter((book) => {
@@ -47,4 +47,4 @@ function ListBooks(props) {
 }
 
 
-export default ListBooks;
+export default BookShelfPage;

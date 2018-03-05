@@ -1,10 +1,10 @@
 import React from 'react';
 
-import SearchBooksBar from './SearchBooksBar';
-import SearchBooksResults from './SearchBooksResults';
+import SearchBooksBar from '../components/SearchBooksBar';
+import SearchBooksResults from '../components/SearchBooksResults';
 
 
-function SearchBooks(props) {
+function BookSearchPage(props) {
   let {
     handleQueryChange,
     searchResults,
@@ -21,4 +21,4 @@ function SearchBooks(props) {
 }
 
 
-export default SearchBooks;
+export default BookSearchPage;
