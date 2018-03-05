@@ -17,6 +17,7 @@ class App extends React.Component {
 
     this.handleBookshelfUpdate = this.handleBookshelfUpdate.bind(this);
     this.handleQueryChange = this.handleQueryChange.bind(this);
+    this.handleResetSearchResults = this.handleResetSearchResults.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +76,12 @@ class App extends React.Component {
       });
   }
 
+  handleResetSearchResults() {
+    this.setState({
+      searchResults: []
+    });
+  }
+
   render() {
     let books = Object.keys(this.state.booksById).map((key) => {
       return this.state.booksById[key];
@@ -91,6 +98,7 @@ class App extends React.Component {
         <Route path="/search" render={() => (
           <BookSearchPage
             searchResults={this.state.searchResults}
+            onResetSearchResults={this.handleResetSearchResults}
             handleQueryChange={this.handleQueryChange}
             onBookShelfUpdate={this.handleBookshelfUpdate} />
         )} />

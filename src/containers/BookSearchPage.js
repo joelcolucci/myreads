@@ -4,20 +4,29 @@ import SearchBooksBar from '../components/SearchBooksBar';
 import SearchBooksResults from '../components/SearchBooksResults';
 
 
-function BookSearchPage(props) {
-  let {
-    handleQueryChange,
-    searchResults,
-    onBookShelfUpdate } = props;
+class BookSearchPage extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="search-books">
-      <SearchBooksBar onQueryChange={handleQueryChange} />
-      <SearchBooksResults
-        books={searchResults}
-        onBookshelfUpdate={onBookShelfUpdate} />
-    </div>
-  );
+    // Clear searchResults state on App to ensure blank page
+    props.onResetSearchResults();
+  }
+
+  render() {
+    let {
+      handleQueryChange,
+      searchResults,
+      onBookShelfUpdate } = this.props;
+
+    return (
+      <div className="search-books">
+        <SearchBooksBar onQueryChange={handleQueryChange} />
+        <SearchBooksResults
+          books={searchResults}
+          onBookshelfUpdate={onBookShelfUpdate} />
+      </div>
+    );
+  }
 }
 
 
