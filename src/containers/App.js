@@ -60,9 +60,17 @@ class App extends React.Component {
         if (!results || results.error) {
           results = [];
         }
-        // TODO: Merge books on shelf with searchResults
+
+        let mergedResults = results.map((book) => {
+          let savedBook = this.state.booksById[book.id];
+          if (savedBook) {
+            return {...book, shelf: savedBook.shelf};
+          }
+          return {...book, shelf: 'none'};
+        });
+
         this.setState({
-          searchResults: results
+          searchResults: mergedResults
         });
       });
   }
