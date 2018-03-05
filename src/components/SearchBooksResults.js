@@ -8,7 +8,7 @@ function SearchBooksResults(props) {
   return (
     <div className="search-books-results">
       <ol className="books-grid">
-        {props.results.map((book) => {
+        {props.books.map((book) => {
           return (
             <li key={book.id}>
               <Book

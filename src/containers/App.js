@@ -11,20 +11,43 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      books: [],
+      booksById: {},
+      bookIdsByShelf: {},
       searchResults: []
     };
 
     this.handleBookshelfUpdate = this.handleBookshelfUpdate.bind(this);
+    this.handleQueryChange = this.handleQueryChange.bind(this);
   }
 
   componentDidMount() {
     BooksAPI
       .getAll()
       .then((books) => {
+        let booksById = books.reduce((accumulator, elem) => {
+          accumulator[elem.id] = elem;
+          return accumulator;
+        }, {});
+
+        let bookIdsByShelf = books.reduce((accumulator, elem) => {
+          if (accumulator[elem.shelf]) {
+            accumulator[elem.shelf].push(elem.id);
+          } else {
+            accumulator[elem.shelf] = [elem.id];
+          }
+          return accumulator;
+        }, {});
+
         this.setState({
           ...this.state,
-          books: books
+          booksById: {
+            ...this.state.booksById,
+            ...booksById
+          },
+          bookIdsByShelf: {
+            ...this.state.bookIdsByShelf,
+            ...bookIdsByShelf
+          }
         });
       });
   }
@@ -48,17 +71,38 @@ class App extends React.Component {
       });
   }
 
+  handleQueryChange(query) {
+    BooksAPI
+      .search(query)
+      .then((results) => {
+        if (!results || results.error) {
+          results = [];
+        }
+        // TODO: Merge books on shelf with searchResults
+        this.setState({
+          searchResults: results
+        });
+      });
+  }
+
   render() {
+    let books = Object.keys(this.state.booksById).map((key) => {
+      return this.state.booksById[key];
+    });
+
     return (
       <div className="app">
         <Route exact path="/" render={() => (
           <ListBooks
-            books={this.state.books}
+            books={books}
             onBookshelfUpdate={this.handleBookshelfUpdate} />
         )} />
 
         <Route path="/search" render={() => (
-          <SearchBooks />
+          <SearchBooks
+            searchResults={this.state.searchResults}
+            handleQueryChange={this.handleQueryChange}
+            onBookShelfUpdate={this.handleBookshelfUpdate} />
         )} />
       </div>
     );
