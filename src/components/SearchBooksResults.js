@@ -24,7 +24,7 @@ function SearchBooksResults(props) {
 
 
 SearchBooksResults.propTypes = {
-  results: PropTypes.array,
+  books: PropTypes.array,
   onBookshelfUpdate: PropTypes.func
 };
 
