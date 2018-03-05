@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Bookshelf from '../components/Bookshelf';
 import ListBooksTitle from '../components/ListBooksTitle';
@@ -45,6 +46,12 @@ function BookShelfPage(props) {
     </div>
   );
 }
+
+
+BookShelfPage.propTypes = {
+  books: PropTypes.array,
+  onBookshelfUpdate: PropTypes.func
+};
 
 
 export default BookShelfPage;

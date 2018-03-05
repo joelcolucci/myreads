@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SearchBooksBar from '../components/SearchBooksBar';
 import SearchBooksResults from '../components/SearchBooksResults';
@@ -14,8 +15,8 @@ class BookSearchPage extends React.Component {
 
   render() {
     let {
-      onQueryChange,
       searchResults,
+      onQueryChange,
       onBookShelfUpdate } = this.props;
 
     return (
@@ -28,6 +29,14 @@ class BookSearchPage extends React.Component {
     );
   }
 }
+
+
+BookSearchPage.propTypes = {
+  searchResults: PropTypes.array,
+  onBookShelfUpdate: PropTypes.func,
+  onQueryChange: PropTypes.func,
+  onResetSearchResults: PropTypes.func
+};
 
 
 export default BookSearchPage;
