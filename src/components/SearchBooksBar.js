@@ -15,11 +15,11 @@ class SearchBooksBar extends React.Component {
   }
 
   handleQueryChange(event) {
-    let query = event.target.value.trim();
+    let query = event.target.value;
 
     this.setState({ query: query });
 
-    this.props.onQueryChange(query);
+    this.props.onQueryChange(query.trim());
   }
 
   render() {
