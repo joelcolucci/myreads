@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Bookshelf from '../components/Bookshelf';
-import ListBooksTitle from '../components/ListBooksTitle';
 import ListBooksContent from '../components/ListBooksContent';
+import Header from '../components/Header';
+import HeaderTitle from '../components/HeaderTitle';
 
 
 function BookShelfPage(props) {
@@ -24,7 +25,9 @@ function BookShelfPage(props) {
 
   return (
     <div className="list-books">
-      <ListBooksTitle />
+      <Header>
+        <HeaderTitle>MyReads</HeaderTitle>
+      </Header>
       <ListBooksContent>
         <Bookshelf
           title="Currently Reading"

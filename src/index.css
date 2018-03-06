@@ -25,6 +25,7 @@ body,
 
 body {
   line-height: 1.5;
+  padding: 80px 10px 20px;
 }
 
 body,
@@ -32,6 +33,25 @@ body,
   background: white;
 }
 
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  height: 55px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 0 6px rgba(0,0,0,0.23);
+  align-items: center;
+  padding: 0 20px;
+  background: #2196F3;
+  color: #fff;
+}
+
+.header-title {
+  font-size: 24px;
+  margin: 0;
+}
 
 /* Book shelf page */
 .list-books-title {
@@ -39,6 +59,7 @@ body,
   background: #2e7c31;
   text-align: center;
 }
+
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
@@ -79,7 +100,7 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: #0D47A1;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -179,7 +200,7 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #0D47A1;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
