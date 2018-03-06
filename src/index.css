@@ -30,7 +30,7 @@ body {
 
 body,
 .app {
-  background: white;
+  background: #eaeaea;
 }
 
 .header {
@@ -51,20 +51,10 @@ body,
 .header-title {
   font-size: 24px;
   margin: 0;
+  font-weight: 300;
 }
 
 /* Book shelf page */
-.list-books-title {
-  padding: 10px 0;
-  background: #2e7c31;
-  text-align: center;
-}
-
-.list-books-title h1 {
-  font-weight: 400;
-  margin: 0;
-  color: white;
-}
 
 .list-books-content {
   padding: 0 0 80px;
@@ -82,7 +72,7 @@ body,
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  font-weight: 300;
 }
 
 .bookshelf-books {
@@ -149,7 +139,7 @@ body,
 }
 
 .search-books-results {
-  padding: 80px 10px 20px;
+  padding: 20px 10px;
 }
 
 
@@ -170,16 +160,27 @@ body,
 }
 
 .book {
-  width: 140px;
+  display: flex;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 325px;
+  border-radius: 3px;
+  background: #fff;
 }
 
-.book-title,
+.book-details {
+  padding: 10px;
+  position: relative;
+  width: 201px;
+}
+
 .book-authors {
   font-size: 0.8em;
 }
 
 .book-title {
-  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  font-weight: 300;
 }
 
 .book-authors {
@@ -193,19 +194,19 @@ body,
   align-items: flex-end;
 }
 
-.book-shelf-changer {
+.book-toolbar {
   position: absolute;
+  bottom: 0;
   right: 0;
-  bottom: -10px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #0D47A1;
-  background-image: url('./icons/arrow-drop-down.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  left: 0;
+  text-align: right;
+  padding: 10px 15px;
+}
+
+.book-shelf-changer {
+  display: inline-block;
+  position: relative;
+  color: #039be5;
 }
 
 .book-shelf-changer select {
@@ -213,13 +214,16 @@ body,
   height: 100%;
   opacity: 0;
   cursor: pointer;
+  position: absolute;
+  left: 0;
 }
 
-
-/* Books cover */
 .book-cover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  height: 193px;
+  width: 124px;
   background: #eee;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .book-cover-title {

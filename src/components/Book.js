@@ -20,25 +20,27 @@ class Book extends React.Component {
 
     return (
       <div className="book">
-        <div className="book-top">
-          <div className="book-cover" style={imageLinks && {
-            width: 128,
-            height: 193,
-            backgroundImage: `url(${imageLinks.thumbnail})`
-            }}></div>
-          <div className="book-shelf-changer">
-            <select value={shelf} onChange={this.handleChange}>
-              <option disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
+
+        <img className="book-cover" src={imageLinks && imageLinks.thumbnail} alt="Thumbnail of book cover" />
+
+        <div className="book-details">
+          <h3 className="book-title">{title}</h3>
+          <div className="book-authors">
+            {authors && authors.map((author) => `${author} `)}
           </div>
-        </div>
-        <div className="book-title">{title}</div>
-        <div className="book-authors">
-          {authors && authors.map((author) => `${author} `)}
+
+          <div className="book-toolbar">
+            <div className="book-shelf-changer">
+              Add to shelf
+              <select value={shelf} onChange={this.handleChange}>
+                <option disabled>Move to...</option>
+                <option value="currentlyReading">Currently Reading</option>
+                <option value="wantToRead">Want to Read</option>
+                <option value="read">Read</option>
+                <option value="none">None</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     );
