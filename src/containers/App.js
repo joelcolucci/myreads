@@ -39,19 +39,21 @@ class App extends React.Component {
   }
 
   handleBookshelfUpdate(book, shelf) {
+    // Optimistic render
+    this.setState({
+      booksById: {
+        ...this.state.booksById,
+        [book.id]: {
+          ...book,
+          shelf: shelf
+        }
+      }
+    });
+
     BooksAPI
-      .update(book, shelf)
-      .then(() => {
-        this.setState({
-          booksById: {
-            ...this.state.booksById,
-            [book.id]: {
-              ...book,
-              shelf: shelf
-            }
-          }
-        });
-      });
+      .update(book, shelf);
+
+    setTimeout(() => alert('Book shelf updated!'), 0);
   }
 
   handleQueryChange(query) {
